@@ -3,25 +3,355 @@
 <PropertyList>
  <path>crewsection.ac</path>
 
+  <effect>
+   <inherits-from>Effects/model-transparent</inherits-from>
+   <object-name>foil</object-name>
+  </effect>
+  <effect>
+   <inherits-from>Aircraft/an24b/Models/Effects/alu</inherits-from>
+   <object-name>hull</object-name>
+   <object-name>lining</object-name>
+   <object-name>emerg_hatch_top</object-name>
+   <object-name>fuses</object-name>
+   <object-name>engrack</object-name>
+   <object-name>KRP-FM</object-name>
+   <object-name>GRP-2M</object-name>
+   <object-name>APBK-M</object-name>
+   <object-name>AP_ILS-impl</object-name>
+   <object-name>US-8K_receiver</object-name>
+  </effect>
+
+ <animation>
+  <type>select</type>
+  <condition>
+    <property>sim/current-view/internal</property>
+  </condition>
+  <object-name>lining</object-name>
+  <object-name>fuses</object-name>
+ </animation>
+
+
+<animation>
+  <type>pick</type>
+  <object-name>RK_hood</object-name>
+  <visible>true</visible>
+  <action>
+    <button>0</button>
+    <repeatable>false</repeatable>
+    <binding>
+      <command>nasal</command>
+      <script>
+        if( getprop("an24/animations/RK_hood" ) == 1.0 ){
+        interpolate("an24/animations/RK_hood", 0.0, 0.5 );
+        }
+        else {
+        interpolate("an24/animations/RK_hood", 1.0, 0.5 );
+        }
+      </script>
+    </binding>
+  </action>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>RK_hood</object-name>
+  <property>an24/animations/RK_hood</property>
+  <factor>76.0</factor>
+  <center>
+    <x-m>0.0</x-m>
+    <y-m>0.968</y-m>
+    <z-m>0.015</z-m>    
+  </center>
+  <axis>
+    <x>1</x>
+    <y>0</y>
+    <z>0</z>    
+  </axis>
+</animation>
+
+
+<!-- Navigator's Panel -->
+
 <model>
   <name>RPSN-2</name>
-  <path>Aircraft/an24b/Models/Interior/Instruments/RPSN_mpnav/block4sh.xml</path>
+  <path>Aircraft/an24b/Models/Interior/Instruments/RPSN_mpnavoh/block4sh.xml</path>
   <offsets>
-    <x-m>3.1</x-m>
-    <y-m>-0.86</y-m>
-    <z-m>0.9</z-m>
-    <roll-deg>35</roll-deg>
+    <x-m>3.33</x-m>
+    <y-m>-0.97</y-m>
+    <z-m>0.8</z-m>
+    <roll-deg>25</roll-deg>
   </offsets>
 </model>
 
 <model>
   <name>SPU-7</name>
-  <path>Aircraft/an24b/Models/Interior/Instruments/SPU-7_lcrcnav/navspu-7.xml</path>
+  <path>Aircraft/an24b/Models/Interior/Instruments/SPU-7_lcrcnaveng/navspu-7.xml</path>
   <offsets>
-    <x-m>3.77</x-m>
-    <y-m>-0.76</y-m>
-    <z-m>1.01</z-m>
+    <x-m>3.985</x-m>
+    <y-m>-0.69</y-m>
+    <z-m>1.041</z-m>
+    <heading-deg>180</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>AChS-1</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ACHS-1_mprcnav/navachs-1.xml</path>
+  <offsets>
+    <x-m>3.9303</x-m>
+    <y-m>-0.917</y-m>
+    <z-m>0.8606</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ARK-11-1</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ARK-11_navoh/navark-11-1.xml</path>
+  <offsets>
+    <x-m>3.85</x-m>
+    <y-m>-0.832</y-m>
+    <z-m>1.165</z-m>
+    <heading-deg>90</heading-deg>
+    <pitch-deg>130</pitch-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ARK-Indicator-1</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ARK-11_navoh/navark-ind-1.xml</path>
+  <offsets>
+    <x-m>3.8141</x-m>
+    <y-m>-0.747</y-m>
+    <z-m>1.269</z-m>
+    <heading-deg>90</heading-deg>
+    <pitch-deg>40</pitch-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ARK-11-2</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ARK-11_navoh/navark-11-2.xml</path>
+  <offsets>
+    <x-m>3.626</x-m>
+    <y-m>-0.832</y-m>
+    <z-m>1.165</z-m>
+    <heading-deg>90</heading-deg>
+    <pitch-deg>130</pitch-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ARK-Indicator-2</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ARK-11_navoh/navark-ind-2.xml</path>
+  <offsets>
+    <x-m>3.7324</x-m>
+    <y-m>-0.747</y-m>
+    <z-m>1.269</z-m>
+    <heading-deg>90</heading-deg>
+    <pitch-deg>40</pitch-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ARK-USH</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ARK-11_navoh/nav_ark-ush.xml</path>
+  <offsets>
+    <x-m>3.741</x-m>
+    <y-m>-0.907</y-m>
+    <z-m>0.9712</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>ZK</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/ZK_mprpnav/nav_ush.xml</path>
+  <offsets>
+    <x-m>3.8466</x-m>
+    <y-m>-0.924</y-m>
+    <z-m>0.8605</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>KUS-730-1100</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/KUS-730_lpmpnav/navkus730_1100.xml</path>
+  <offsets>
+    <x-m>3.6235</x-m>
+    <y-m>-0.92</y-m>
+    <z-m>0.8166</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>UVO-15M</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/UVO-15M_lpmpnav/navuvo-15m.xml</path>
+  <offsets>
+    <x-m>3.6238</x-m>
+    <y-m>-0.922</y-m>
+    <z-m>0.9104</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>KM-8</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/KM-8_nav/km-8.xml</path>
+  <offsets>
+    <x-m>3.9303</x-m>
+    <y-m>-0.903</y-m>
+    <z-m>0.9469</z-m>
+    <heading-deg>90</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>FireTestPanel</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/FireTestPanel_nav/firetestpanel.xml</path>
+  <offsets>
+    <x-m>3.238</x-m>
+    <y-m>-0.71</y-m>
+    <z-m>1.436</z-m>
+    <pitch-deg>63</pitch-deg>
+    <heading-deg>90</heading-deg>
+    <roll-deg>-3</roll-deg>
+  </offsets>
+</model>
+
+<!-- Radio Operator's/ Engineer's Panel -->
+
+<model>
+  <name>SPU-7</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/SPU-7_lcrcnaveng/engspu-7.xml</path>
+  <offsets>
+    <x-m>3.9</x-m>
+    <y-m>0.883</y-m>
+    <z-m>0.64</z-m>
+    <heading-deg>180</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>US-8K</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/US-8K_rceng/eng_us-8k.xml</path>
+  <offsets>
+    <x-m>3.912</x-m>
+    <y-m>0.849</y-m>
+    <z-m>0.451</z-m>
+    <heading-deg>180</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>R-836b1b2b3b4</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/R-836_rceng/eng_r-836b1b2b3b4.xml</path>
+  <offsets>
+    <x-m>3.81</x-m>
+    <y-m>0.62</y-m>
+    <z-m>1.08</z-m>
+  </offsets>
+</model>
+
+<model>
+  <name>R-836b6</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/R-836_rceng/eng_r-836b6.xml</path>
+  <offsets>
+    <x-m>3.9092</x-m>
+    <y-m>0.7361</y-m>
+    <z-m>0.6516</z-m>
+    <heading-deg>180</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>115_36VAC_Panel</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/115_36VAC_panel_eng/115_36vac.xml</path>
+  <offsets>
+    <x-m>3.768</x-m>
+    <y-m>1.057</y-m>
+    <z-m>0.616</z-m>
+    <heading-deg>232</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>Electrical_Panel</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/Electrical_Panel_eng/electrical_panel.xml</path>
+  <offsets>
+    <x-m>3.899</x-m>
+    <y-m>0.4698</y-m>
+    <z-m>0.61</z-m>
+    <heading-deg>180</heading-deg>
+  </offsets>
+</model>
+
+<model>
+  <name>CircuitBreakerPanel</name>
+  <path>Aircraft/an24b/Models/Interior/Instruments/CircuitBreakerPanel_eng/circuitbreakerpanel.xml</path>
+  <offsets>
+    <x-m>3.334</x-m>
+    <y-m>0.886</y-m>
+    <z-m>1.06</z-m>
+    <heading-deg>4</heading-deg>
+    <roll-deg>32</roll-deg>
+    <pitch-deg>-2</pitch-deg>
+  </offsets>
+</model>
+
+<!--******************************************************-->
+
+<model>
+  <name>WhiteLampleft</name>
+  <path>Aircraft/an24b/Models/Interior/shared/lamps/intlampwhite.xml</path>
+  <offsets>
+    <x-m>3.318</x-m>
+    <y-m>-0.558</y-m>
+    <z-m>1.523</z-m>
     <heading-deg>175</heading-deg>
+    <roll-deg>67</roll-deg>
+    <!--pitch-deg>-2</pitch-deg-->
+  </offsets>
+</model>
+
+<model>
+  <name>RedLampleft</name>
+  <path>Aircraft/an24b/Models/Interior/shared/lamps/intlampred.xml</path>
+  <offsets>
+    <x-m>3.4514</x-m>
+    <y-m>-0.5668</y-m>
+    <z-m>1.5338</z-m>
+    <heading-deg>-185</heading-deg>
+    <roll-deg>67</roll-deg>
+    <!--pitch-deg>-2</pitch-deg-->
+  </offsets>
+</model>
+
+<model>
+  <name>WhiteLampright</name>
+  <path>Aircraft/an24b/Models/Interior/shared/lamps/intlampred.xml</path>
+  <offsets>
+    <x-m>3.318</x-m>
+    <y-m>0.558</y-m>
+    <z-m>1.523</z-m>
+    <heading-deg>5</heading-deg>
+    <roll-deg>67</roll-deg>
+    <!--pitch-deg>-2</pitch-deg-->
+  </offsets>
+</model>
+
+<model>
+  <name>RedLampright</name>
+  <path>Aircraft/an24b/Models/Interior/shared/lamps/intlampwhite.xml</path>
+  <offsets>
+    <x-m>3.4514</x-m>
+    <y-m>0.566</y-m>
+    <z-m>1.5312</z-m>
+    <heading-deg>5</heading-deg>
+    <roll-deg>67</roll-deg>
+    <!--pitch-deg>-2</pitch-deg-->
   </offsets>
 </model>
 
